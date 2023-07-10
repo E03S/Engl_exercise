@@ -4,6 +4,8 @@ import pandas as pd
 from nltk.tokenize import sent_tokenize,word_tokenize
 import lemminflect 
 
+nltk.download('punkt')
+
 class EngExer:
     
     def __init__(self):
