@@ -1,9 +1,10 @@
 import spacy 
 import random 
 import pandas as pd
+import nltk
 from nltk.tokenize import sent_tokenize,word_tokenize
 import lemminflect 
-
+ 
 nltk.download('punkt')
 
 class EngExer:
