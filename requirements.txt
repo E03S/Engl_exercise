@@ -4,3 +4,4 @@ numpy
 spacy  
 nltk
 lemminflect 
+en_core_web_sm
