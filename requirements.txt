@@ -1,7 +1,6 @@
 streamlit
 pandas
 numpy
-spacy 
-random 
+spacy  
 nltk
 lemminflect 
