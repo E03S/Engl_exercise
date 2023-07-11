@@ -91,7 +91,7 @@ if art!=0:
             result.append(st.text_input('nolabel',label_visibility="hidden",key = i*10+j))
             if result[j] == None:
                 pass
-            elif result[j] == df.iloc[[i]]['answer'].values[0][j]:
+            elif result[j].lower() == df.iloc[[i]]['answer'].values[0][j].lower():
                 st.success('', icon="✔️")
             else:
                 st.error('', icon="❌") 
@@ -106,7 +106,7 @@ if con!=0:
             result.append(st.text_input('nolabel',label_visibility="hidden",key = i*10+j))
             if result[j] == None:
                 pass
-            elif result[j] == df.iloc[[i]]['answer'].values[0][j]:
+            elif result[j].lower() == df.iloc[[i]]['answer'].values[0][j].lower():
                 st.success('', icon="✔️")
             else:
                 st.error('', icon="❌")
