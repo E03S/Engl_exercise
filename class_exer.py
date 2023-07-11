@@ -86,7 +86,7 @@ class EngExer:
         #print(sent_true)
         dict = {'raw': None,'type': 'Multiple sentence recombination', 'task': 'Выстройте предложения в правильном порядке','options': [sent_rand],'answer': [sent_true]}
         #print(dict)
-        self.__position+=1
+        self.__position+=5
         return pd.DataFrame(dict)
         
     def conj_rem(self):
