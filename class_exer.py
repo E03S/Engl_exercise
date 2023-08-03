@@ -4,13 +4,11 @@ import pandas as pd
 import nltk
 from nltk.tokenize import sent_tokenize,word_tokenize
 import lemminflect 
-
-# download sentence tokenizer
+ 
 nltk.download('punkt')
 
 class EngExer:
     
-    #raw initialization creates empty DataFrame with relevant columns, also loads spacy model 
     def __init__(self):
         self.__text = ''
         self.__nlp = spacy.load('en_core_web_sm')
@@ -18,42 +16,34 @@ class EngExer:
         self.__sent = []
         self.__position = 0
         
-    #load text with path    
+        
     def load_path(self, file_path):
         with open(file_path) as file:
             self.__text = file.read()
         self.__sent = sent_tokenize(self.__text)
 
-	#load text as file
     def load_text(self, text):
         self.__sent = sent_tokenize(text)
-
-	#create verb replacement task
+        
     def verb_replace(self, hard = False):
-		# get sentence
         doc = self.__nlp(self.__sent[self.__position])
         words = []
         pos = []
         options = []
         correct = []
         raw = []
-        #get words and pos
-	for w in doc:
+        for w in doc:
             words.append(w.text)
             pos.append(w.pos_)
-			
-		#in case no verbs skip sentence	
         if not 'VERB' in pos:
             #print(self.__position)
             self.__position+=1
             return None
-			
         for i in range(len(pos)):
             if pos[i] == 'VERB':
                 temp = []
                 correct.append(words[i])
                 temp.append(words[i])
-				#get inflections 
                 w = list( lemminflect.getAllInflections(lemminflect.getLemma(words[i], upos='VERB')[0], upos = "VERB").values() ) 
                 for i in range(len(w)):
                     if w[i][0] not in temp:
@@ -62,10 +52,8 @@ class EngExer:
                 raw.append('___')
             else:
                 raw.append(words[i])
-		# case of hard mode
         if hard == True:
             options = None
-		#makes DataFrame row
         dict = {'raw':[raw],'type':'verb selection', 'task':'Выберете правильную форму глагола','options':[options],'answer': [correct]}
         self.__position+=1
         return pd.DataFrame(dict) 
@@ -212,6 +200,10 @@ class EngExer:
     '''    
 
     
+
+
+
+        
 
 
 
