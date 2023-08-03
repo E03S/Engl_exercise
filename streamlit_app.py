@@ -55,7 +55,7 @@ try:
             options = st.multiselect('Варианты',list(df.iloc[[i]]['options'].values[0]),default = None,label_visibility="hidden")
         #st.write(len(options))
         #st.write(len(df.iloc[[i]]['answer'].values[0]))
-            st.text(options)
+            st.write(options)
             if len(options) == len(df.iloc[[i]]['answer'].values[0]):
                 if options ==  df.iloc[[i]]['raw'].values[0]:
                     st.success('',icon='✔️')
@@ -71,7 +71,7 @@ try:
             options = st.multiselect('Варианты',list(df.iloc[[i]]['options'].values[0]),default = None,label_visibility="hidden")
         #st.write(len(' '.join(options)))
         #st.write(len(df.iloc[[i]]['answer'].values[0]))
-            st.text(options)
+            st.write(options)
             if len(options) == len(df.iloc[[i]]['answer'].values[0]):
                 if options ==  df.iloc[[i]]['raw'].values[0]:
                     st.success('',icon='✔️')
