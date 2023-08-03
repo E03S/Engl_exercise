@@ -28,85 +28,84 @@ con = st.number_input("Задания на вписание правильног
 def gen_text(verb,word,mlt_sent,art,con):
     return excercise.set_params(verb,word,mlt_sent,art,con)
 
-df = gen_text(verb,word,mlt_sent,art,con)
+try:
+    df = gen_text(verb,word,mlt_sent,art,con)
     
-position = 0
-if verb!=0:
-    st.header('Выбете праввильную форму глагола')
-    for i in range(verb):
-        result = []
-        st.text(' '.join(df.iloc[[i]]['raw'].values[0]))
-        for j,h in enumerate(df.iloc[[i]]['options'].values[0]):
-            result.append(st.selectbox('nolabel', ['–––'] + h, 
+    position = 0
+    if verb!=0:
+        st.header('Выбете праввильную форму глагола')
+        for i in range(verb):
+            result = []
+            st.text(' '.join(df.iloc[[i]]['raw'].values[0]))
+            for j,h in enumerate(df.iloc[[i]]['options'].values[0]):
+                result.append(st.selectbox('nolabel', ['–––'] + h, 
                                              label_visibility="hidden",key = i*10+j))
-            if result[j] == '–––':
-                pass
-            elif result[j] == df.iloc[[i]]['answer'].values[0][j]:
-                st.success('', icon="✔️")
-            else:
-                st.error('', icon="❌")        
+                if result[j] == '–––':
+                    pass
+                elif result[j] == df.iloc[[i]]['answer'].values[0][j]:
+                    st.success('', icon="✔️")
+                else:
+                    st.error('', icon="❌")        
                 
-position += verb         
-if word!=0:
-    st.header('Постройте предложение')
-    for i in range(position,position+word):
+    position += verb         
+    if word!=0:
+        st.header('Постройте предложение')
+        for i in range(position,position+word):
             
-        options = st.multiselect('Варианты',list(df.iloc[[i]]['options'].values[0]),default = None,label_visibility="hidden")
+            options = st.multiselect('Варианты',list(df.iloc[[i]]['options'].values[0]),default = None,label_visibility="hidden")
         #st.write(len(options))
         #st.write(len(df.iloc[[i]]['answer'].values[0]))
-        if options == None:
-            pass
-        elif len(options) == len(df.iloc[[i]]['answer'].values[0]):
-            if options ==  df.iloc[[i]]['raw'].values[0]:
-                st.success('',icon='✔️')
+            st.text(options)
+            if len(options) == len(df.iloc[[i]]['answer'].values[0]):
+                if options ==  df.iloc[[i]]['raw'].values[0]:
+                    st.success('',icon='✔️')
+                else:
+                    st.error('',icon='❌')
             else:
-                st.error('',icon='❌')
-        else:
-            pass        
+                pass        
 
-position+= word
-if mlt_sent!=0:
-    st.header('Выставьте предложения в правильном порядке')
-    for i in range(position,position+mlt_sent):
-        options = st.multiselect('Варианты',list(df.iloc[[i]]['options'].values[0]),default = None,label_visibility="hidden")
+    position+= word
+    if mlt_sent!=0:
+        st.header('Выставьте предложения в правильном порядке')
+        for i in range(position,position+mlt_sent):
+            options = st.multiselect('Варианты',list(df.iloc[[i]]['options'].values[0]),default = None,label_visibility="hidden")
         #st.write(len(' '.join(options)))
         #st.write(len(df.iloc[[i]]['answer'].values[0]))
-        if options == None:
-            pass
-        elif len(options) == len(df.iloc[[i]]['answer'].values[0]):
-            if options ==  df.iloc[[i]]['raw'].values[0]:
-                st.success('',icon='✔️')
-            else:
-                st.error('',icon='❌')
-        else:
-            pass
+            st.text(options)
+            if len(options) == len(df.iloc[[i]]['answer'].values[0]):
+                if options ==  df.iloc[[i]]['raw'].values[0]:
+                    st.success('',icon='✔️')
+                else:
+                    st.error('',icon='❌')
+                else:
+                    pass
 
-position+= mlt_sent
-if art!=0:
-    st.header('Впишите правильный артикль')
-    for i in range(position,position+art):
-        result = []
-        st.text(' '.join(df.iloc[[i]]['raw'].values[0]))
-        for j,h in enumerate(df.iloc[[i]]['answer'].values[0]):
-            result.append(st.text_input('nolabel',label_visibility="hidden",key = i*10+j))
-            if result[j] == None:
-                pass
-            elif result[j].lower() == df.iloc[[i]]['answer'].values[0][j].lower():
-                st.success('', icon="✔️")
-            else:
-                st.error('', icon="❌") 
+    position+= mlt_sent
+    if art!=0:
+        st.header('Впишите правильный артикль')
+        for i in range(position,position+art):
+            result = []
+            st.text(' '.join(df.iloc[[i]]['raw'].values[0]))
+            for j,h in enumerate(df.iloc[[i]]['answer'].values[0]):
+                result.append(st.text_input('nolabel',label_visibility="hidden",key = i*10+j))
+                if result[j] == None:
+                    pass
+                elif result[j].lower() == df.iloc[[i]]['answer'].values[0][j].lower():
+                    st.success('', icon="✔️")
+                else:
+                    st.error('', icon="❌") 
 
-position+= art
-if con!=0:
-    st.header('Впишите правильное соединение')
-    for i in range(position,position+con):
-        result = []
-        st.text(' '.join(df.iloc[[i]]['raw'].values[0]))
-        for j,h in enumerate(df.iloc[[i]]['answer'].values[0]):
-            result.append(st.text_input('nolabel',label_visibility="hidden",key = i*10+j))
-            if result[j] == None:
-                pass
-            elif result[j].lower() == df.iloc[[i]]['answer'].values[0][j].lower():
-                st.success('', icon="✔️")
-            else:
-                st.error('', icon="❌")
+    position+= art
+    if con!=0:
+        st.header('Впишите правильное соединение')
+        for i in range(position,position+con):
+            result = []
+            st.text(' '.join(df.iloc[[i]]['raw'].values[0]))
+            for j,h in enumerate(df.iloc[[i]]['answer'].values[0]):
+                result.append(st.text_input('nolabel',label_visibility="hidden",key = i*10+j))
+                if result[j] == None:
+                    pass
+                elif result[j].lower() == df.iloc[[i]]['answer'].values[0][j].lower():
+                    st.success('', icon="✔️")
+                else:
+                    st.error('', icon="❌")
