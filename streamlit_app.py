@@ -61,8 +61,7 @@ try:
                     st.success('',icon='✔️')
                 else:
                     st.error('',icon='❌')
-            else:
-                pass        
+                 
 
     position+= word
     if mlt_sent!=0:
@@ -77,8 +76,7 @@ try:
                     st.success('',icon='✔️')
                 else:
                     st.error('',icon='❌')
-                else:
-                    pass
+                
 
     position+= mlt_sent
     if art!=0:
