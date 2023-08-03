@@ -107,3 +107,5 @@ try:
                     st.success('', icon="✔️")
                 else:
                     st.error('', icon="❌")
+finally:
+    st.write('Please uplad text')
