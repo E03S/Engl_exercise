@@ -38,7 +38,7 @@ class EngExer:
         correct = []
         raw = []
         #get words and pos
-		for w in doc:
+	for w in doc:
             words.append(w.text)
             pos.append(w.pos_)
 			
