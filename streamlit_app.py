@@ -56,7 +56,7 @@ if word!=0:
         options = st.multiselect('Варианты',list(df.iloc[[i]]['options'].values[0]),default = None,label_visibility="hidden")
     #st.write(len(options))
     #st.write(len(df.iloc[[i]]['answer'].values[0]))
-        st.text(' '.join(options))
+        st.text(' '.join(list(options)))
         if len(options) == len(df.iloc[[i]]['answer'].values[0]):
             if options ==  df.iloc[[i]]['raw'].values[0]:
                 st.success('',icon='✔️')
@@ -71,7 +71,7 @@ if mlt_sent!=0:
         options = st.multiselect('Варианты',list(df.iloc[[i]]['options'].values[0]),default = None,label_visibility="hidden")
     #st.write(len(' '.join(options)))
     #st.write(len(df.iloc[[i]]['answer'].values[0]))
-        st.text(' '.join(options))
+        st.text(' '.join(list(options)))
         if len(options) == len(df.iloc[[i]]['answer'].values[0]):
             if options ==  df.iloc[[i]]['raw'].values[0]:
                 st.success('',icon='✔️')
