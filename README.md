@@ -11,6 +11,7 @@
 
 вписание правильного соединения
 
-Данное приложение реализуется с помощью streamlit и библиотек: 
+Данное приложение реализуется с помощью streamlit и библиотек: spacy, pandas, nltk, lemminflect
+
 App realisation
 https://englexercise-98xzsmgm9ud.streamlit.app
