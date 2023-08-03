@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-#import class_exer
+import class_exer
 from io import StringIO
 
 
